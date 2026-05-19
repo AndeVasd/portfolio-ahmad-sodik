@@ -261,18 +261,45 @@ mentoring, and contributing to open-source.{"\n\n"}
       {/* SKILLS */}
       <SectionHeading id="skills" label="01" title="Skills & Tools" sub="// the toolkit I use daily" />
       <section className="relative pb-32">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="flex flex-wrap items-start justify-center gap-x-6 gap-y-8 sm:gap-x-10">
             {skills.map((s, idx) => (
-              <Reveal key={s.name} delay={idx * 60}>
-                <div className="group relative overflow-hidden rounded-2xl border border-border bg-surface/50 p-6 text-center backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-teal/60">
-                  <div className="absolute inset-0 -z-10 bg-gradient-to-br from-teal/0 to-teal/0 opacity-0 transition-opacity group-hover:opacity-100 group-hover:from-teal/10" />
-                  <div className="text-4xl animate-float" style={{ animationDelay: `${idx * 0.2}s` }}>{s.icon}</div>
-                  <h4 className="mt-3 font-mono text-sm font-semibold text-teal">{s.name}</h4>
-                  <p className="font-mono text-[11px] text-muted-foreground">{s.desc}</p>
+              <Reveal key={s.name} delay={idx * 40}>
+                <div className="group flex w-20 flex-col items-center gap-2 sm:w-24">
+                  <div
+                    className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-border bg-surface/70 backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:border-teal/60 group-hover:glow-teal sm:h-[72px] sm:w-[72px]"
+                  >
+                    <img
+                      src={`https://cdn.simpleicons.org/${s.slug}${s.color ? `/${s.color}` : ""}`}
+                      alt={s.name}
+                      width={36}
+                      height={36}
+                      loading="lazy"
+                      className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
+                  <span className="text-center font-mono text-[11px] text-teal/90 transition-colors group-hover:text-teal sm:text-xs">
+                    {s.name}
+                  </span>
                 </div>
               </Reveal>
             ))}
+          </div>
+
+          {/* Marquee */}
+          <div className="relative mt-16 overflow-hidden border-y border-border/60 py-5">
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-background to-transparent" />
+            <div className="flex w-max animate-marquee gap-12 whitespace-nowrap">
+              {[...skills, ...skills].map((s, i) => (
+                <span
+                  key={`${s.name}-${i}`}
+                  className="font-display text-2xl font-bold tracking-tight text-muted-foreground/40 sm:text-3xl"
+                >
+                  {s.name}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
