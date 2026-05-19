@@ -4,14 +4,18 @@ import { SiteNav } from "@/components/SiteNav";
 import { Reveal } from "@/components/Reveal";
 
 const skills = [
-  { name: "Kotlin", icon: "🟣", desc: "Android Native" },
-  { name: "Jetpack Compose", icon: "🤖", desc: "Modern UI" },
-  { name: "TypeScript", icon: "🔷", desc: "Typed JS" },
-  { name: "React", icon: "⚛️", desc: "Web UI" },
-  { name: "Next.js", icon: "▲", desc: "Full-Stack" },
-  { name: "Tailwind CSS", icon: "🎨", desc: "Styling" },
-  { name: "Node.js", icon: "🟢", desc: "Backend" },
-  { name: "Firebase", icon: "🔥", desc: "Realtime DB" },
+  { name: "Kotlin", slug: "kotlin" },
+  { name: "Android Studio", slug: "androidstudio" },
+  { name: "Jetpack Compose", slug: "jetpackcompose" },
+  { name: "HTML", slug: "html5" },
+  { name: "CSS", slug: "css3" },
+  { name: "JavaScript", slug: "javascript", color: "F7DF1E" },
+  { name: "PHP", slug: "php" },
+  { name: "Laravel", slug: "laravel" },
+  { name: "MySQL", slug: "mysql" },
+  { name: "Firebase", slug: "firebase" },
+  { name: "React", slug: "react", color: "61DAFB" },
+  { name: "GitHub", slug: "github", color: "ffffff" },
 ];
 
 const projects = [
