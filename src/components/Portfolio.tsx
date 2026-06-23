@@ -107,6 +107,19 @@ function useTyped(words: string[], speed = 90, pause = 1400) {
 
 export default function Portfolio() {
   const typed = useTyped(["Android Developer", "Web Developer", "Full-Stack Engineer"]);
+  const [cvOpen, setCvOpen] = useState(false);
+
+  useEffect(() => {
+    if (!cvOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setCvOpen(false);
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [cvOpen]);
 
   return (
     <div className="min-h-screen overflow-x-hidden">
