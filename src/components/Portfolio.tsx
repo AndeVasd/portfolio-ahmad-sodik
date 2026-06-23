@@ -446,6 +446,50 @@ mentoring, and contributing to open-source.{"\n\n"}
           <span>Crafted with <span className="text-teal">&lt;/&gt;</span> &amp; ☕ in South Sumatra</span>
         </div>
       </footer>
+
+      {/* CV PREVIEW MODAL */}
+      {cvOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-background/80 p-4 backdrop-blur-sm animate-in fade-in"
+          onClick={() => setCvOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="CV Preview"
+        >
+          <div
+            className="relative flex h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-teal/60 bg-surface glow-teal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between gap-3 border-b border-border bg-background/50 px-4 py-3">
+              <div className="flex items-center gap-2 font-mono text-xs text-teal">
+                <FileText size={14} /> CV_Ahmad_Sodik.pdf
+              </div>
+              <div className="flex items-center gap-2">
+                <a
+                  href={cvAsset.url}
+                  download="CV_Ahmad_Sodik.pdf"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-teal px-3 py-1.5 font-mono text-[11px] text-primary-foreground transition-transform hover:scale-105"
+                >
+                  <Download size={12} /> Download
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setCvOpen(false)}
+                  aria-label="Close preview"
+                  className="rounded-full border border-border p-1.5 text-muted-foreground transition-colors hover:border-teal/60 hover:text-teal"
+                >
+                  <X size={14} />
+                </button>
+              </div>
+            </div>
+            <iframe
+              src={`${cvAsset.url}#view=FitH`}
+              title="CV Preview"
+              className="flex-1 w-full bg-white"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
