@@ -294,7 +294,7 @@ mentoring, and contributing to open-source.{"\n\n"}
               {[...skills, ...skills].map((s, i) => (
                 <span
                   key={`${s.name}-${i}`}
-                  className="font-display text-base font-bold tracking-tight text-muted-foreground/40 sm:text-lg"
+                  className="font-display text-xs font-semibold tracking-tight text-muted-foreground/40 sm:text-sm"
                 >
                   {s.name}
                 </span>
