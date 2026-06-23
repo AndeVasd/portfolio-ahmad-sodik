@@ -3,6 +3,7 @@ import { Mail, MapPin, Github, Twitter, Linkedin, Download, Code2, Smartphone, G
 import { SiteNav } from "@/components/SiteNav";
 import { Reveal } from "@/components/Reveal";
 import cvAsset from "@/assets/cv.pdf.asset.json";
+import cvPage1 from "@/assets/cv-page-1.jpg.asset.json";
 
 const skills = [
   { name: "Kotlin", slug: "kotlin" },
