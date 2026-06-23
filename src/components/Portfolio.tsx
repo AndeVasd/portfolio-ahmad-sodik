@@ -156,6 +156,13 @@ export default function Portfolio() {
                 >
                   <Download size={14} /> Hire Me
                 </a>
+                <a
+                  href={cvAsset.url}
+                  download="CV_Ahmad_Sodik.pdf"
+                  className="mt-2 inline-flex items-center gap-2 rounded-full border border-teal/60 px-5 py-2 font-mono text-xs text-teal transition-all hover:bg-teal/10"
+                >
+                  <FileText size={14} /> Download CV
+                </a>
               </div>
             </div>
           </Reveal>
