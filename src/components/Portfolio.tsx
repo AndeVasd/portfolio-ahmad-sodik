@@ -3,6 +3,7 @@ import { Mail, MapPin, Github, Twitter, Linkedin, Download, Code2, Smartphone, G
 import { SiteNav } from "@/components/SiteNav";
 import { Reveal } from "@/components/Reveal";
 import cvAsset from "@/assets/cv.pdf.asset.json";
+import cvPage1 from "@/assets/cv-page-1.jpg.asset.json";
 
 const skills = [
   { name: "Kotlin", slug: "kotlin" },
@@ -482,11 +483,14 @@ mentoring, and contributing to open-source.{"\n\n"}
                 </button>
               </div>
             </div>
-            <iframe
-              src={`${cvAsset.url}#view=FitH`}
-              title="CV Preview"
-              className="flex-1 w-full bg-white"
-            />
+            <div className="flex-1 overflow-y-auto bg-neutral-200 p-4 sm:p-8">
+              <img
+                src={cvPage1.url}
+                alt="CV Ahmad Sodik - halaman 1"
+                className="mx-auto block w-full max-w-3xl rounded-md shadow-2xl ring-1 ring-black/10"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       )}
