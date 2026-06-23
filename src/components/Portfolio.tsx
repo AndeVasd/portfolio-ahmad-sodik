@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Mail, MapPin, Github, Twitter, Linkedin, Download, Code2, Smartphone, Globe, Database, ArrowRight, ExternalLink, Send } from "lucide-react";
+import { Mail, MapPin, Github, Twitter, Linkedin, Download, Code2, Smartphone, Globe, Database, ArrowRight, ExternalLink, Send, FileText } from "lucide-react";
 import { SiteNav } from "@/components/SiteNav";
 import { Reveal } from "@/components/Reveal";
+import cvAsset from "@/assets/cv.pdf.asset.json";
 
 const skills = [
   { name: "Kotlin", slug: "kotlin" },
@@ -154,6 +155,13 @@ export default function Portfolio() {
                   className="mt-6 inline-flex items-center gap-2 rounded-full bg-teal px-5 py-2 font-mono text-xs text-primary-foreground transition-transform hover:scale-105"
                 >
                   <Download size={14} /> Hire Me
+                </a>
+                <a
+                  href={cvAsset.url}
+                  download="CV_Ahmad_Sodik.pdf"
+                  className="mt-2 inline-flex items-center gap-2 rounded-full border border-teal/60 px-5 py-2 font-mono text-xs text-teal transition-all hover:bg-teal/10"
+                >
+                  <FileText size={14} /> Download CV
                 </a>
               </div>
             </div>
