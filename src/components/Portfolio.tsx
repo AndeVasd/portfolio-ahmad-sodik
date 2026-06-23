@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Mail, MapPin, Github, Twitter, Linkedin, Download, Code2, Smartphone, Globe, Database, ArrowRight, ExternalLink, Send } from "lucide-react";
+import { Mail, MapPin, Github, Twitter, Linkedin, Download, Code2, Smartphone, Globe, Database, ArrowRight, ExternalLink, Send, FileText } from "lucide-react";
 import { SiteNav } from "@/components/SiteNav";
 import { Reveal } from "@/components/Reveal";
+import cvAsset from "@/assets/cv.pdf.asset.json";
 
 const skills = [
   { name: "Kotlin", slug: "kotlin" },
