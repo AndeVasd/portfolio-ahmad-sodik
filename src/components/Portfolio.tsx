@@ -483,11 +483,14 @@ mentoring, and contributing to open-source.{"\n\n"}
                 </button>
               </div>
             </div>
-            <iframe
-              src={`${cvAsset.url}#view=FitH`}
-              title="CV Preview"
-              className="flex-1 w-full bg-white"
-            />
+            <div className="flex-1 overflow-y-auto bg-neutral-200 p-4 sm:p-8">
+              <img
+                src={cvPage1.url}
+                alt="CV Ahmad Sodik - halaman 1"
+                className="mx-auto block w-full max-w-3xl rounded-md shadow-2xl ring-1 ring-black/10"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       )}
