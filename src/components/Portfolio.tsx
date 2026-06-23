@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Mail, MapPin, Github, Twitter, Linkedin, Download, Code2, Smartphone, Globe, Database, ArrowRight, ExternalLink, Send, FileText } from "lucide-react";
+import { Mail, MapPin, Github, Twitter, Linkedin, Download, Code2, Smartphone, Globe, Database, ArrowRight, ExternalLink, Send, FileText, Eye, X } from "lucide-react";
 import { SiteNav } from "@/components/SiteNav";
 import { Reveal } from "@/components/Reveal";
 import cvAsset from "@/assets/cv.pdf.asset.json";
@@ -107,6 +107,19 @@ function useTyped(words: string[], speed = 90, pause = 1400) {
 
 export default function Portfolio() {
   const typed = useTyped(["Android Developer", "Web Developer", "Full-Stack Engineer"]);
+  const [cvOpen, setCvOpen] = useState(false);
+
+  useEffect(() => {
+    if (!cvOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setCvOpen(false);
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [cvOpen]);
 
   return (
     <div className="min-h-screen overflow-x-hidden">
@@ -156,13 +169,22 @@ export default function Portfolio() {
                 >
                   <Download size={14} /> Hire Me
                 </a>
-                <a
-                  href={cvAsset.url}
-                  download="CV_Ahmad_Sodik.pdf"
-                  className="mt-2 inline-flex items-center gap-2 rounded-full border border-teal/60 px-5 py-2 font-mono text-xs text-teal transition-all hover:bg-teal/10"
-                >
-                  <FileText size={14} /> Download CV
-                </a>
+                <div className="mt-2 flex w-full flex-col gap-2 sm:flex-row sm:justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setCvOpen(true)}
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-teal/60 px-4 py-2 font-mono text-xs text-teal transition-all hover:bg-teal/10"
+                  >
+                    <Eye size={14} /> Preview CV
+                  </button>
+                  <a
+                    href={cvAsset.url}
+                    download="CV_Ahmad_Sodik.pdf"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-teal/60 px-4 py-2 font-mono text-xs text-teal transition-all hover:bg-teal/10"
+                  >
+                    <FileText size={14} /> Download CV
+                  </a>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -424,6 +446,50 @@ mentoring, and contributing to open-source.{"\n\n"}
           <span>Crafted with <span className="text-teal">&lt;/&gt;</span> &amp; ☕ in South Sumatra</span>
         </div>
       </footer>
+
+      {/* CV PREVIEW MODAL */}
+      {cvOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-background/80 p-4 backdrop-blur-sm animate-in fade-in"
+          onClick={() => setCvOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="CV Preview"
+        >
+          <div
+            className="relative flex h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-teal/60 bg-surface glow-teal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between gap-3 border-b border-border bg-background/50 px-4 py-3">
+              <div className="flex items-center gap-2 font-mono text-xs text-teal">
+                <FileText size={14} /> CV_Ahmad_Sodik.pdf
+              </div>
+              <div className="flex items-center gap-2">
+                <a
+                  href={cvAsset.url}
+                  download="CV_Ahmad_Sodik.pdf"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-teal px-3 py-1.5 font-mono text-[11px] text-primary-foreground transition-transform hover:scale-105"
+                >
+                  <Download size={12} /> Download
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setCvOpen(false)}
+                  aria-label="Close preview"
+                  className="rounded-full border border-border p-1.5 text-muted-foreground transition-colors hover:border-teal/60 hover:text-teal"
+                >
+                  <X size={14} />
+                </button>
+              </div>
+            </div>
+            <iframe
+              src={`${cvAsset.url}#view=FitH`}
+              title="CV Preview"
+              className="flex-1 w-full bg-white"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
