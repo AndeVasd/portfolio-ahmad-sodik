@@ -1,63 +1,132 @@
-# Sodik's Digital Canvas
+# Portfolio Ahmad Sodik
 
-Buatkan website portfolio profesional untuk saya.
---- DATA DIRI ---
-Nama: [Ahmad Sodik]
-Profesi: [Sesuiakan yang ada di profile github]
-Tagline: [Contoh: "Turning ideas into beautiful digital experiences"]
-Email: [ahmadsodik0105@gmail.com]
-LinkedIn: [Sesuiakan yang ada di profile github]
-GitHub: [https://github.com/ahmadsodik4717]
+Website portfolio profesional milik **Ahmad Sodik** — Android & Web Developer dari Sumatera Selatan yang fokus membangun aplikasi Android native dengan Kotlin dan web modern dengan React / TypeScript.
 
---- SKILLS ---
-Sesuiakan yang ada di profile github
---- PROYEK / KARYA ---
-Proyek 1:
-Sesuiakan yang ada di profile github
-  - Nama: [Nama Proyek]
-  - Deskripsi: [1-2 kalimat]
-  - Teknologi: [React, Tailwind, dll]
-  - Link: [URL atau tulis "coming soon"]
+🔗 **Live preview:** [https://id-preview--c423daea-738c-4ef9-bb17-7439b78749d2.lovable.app](https://id-preview--c423daea-738c-4ef9-bb17-7439b78749d2.lovable.app)
 
-Proyek 2:
-Sesuiakan yang ada di profile github
-  - Nama: [...]
-  - Deskripsi: [...]
-  - Teknologi: [...]
-  - Link: [...]
+---
 
-[Tambahkan proyek sesuai kebutuhan]
+## Tentang Website Ini
 
---- PENGALAMAN (opsional) ---
-Sesuiakan yang ada di profile github
+Portfolio ini dirancang dengan tema **terminal / code-dark** beraksen teal/cyan, memberikan kesan teknis, modern, dan memorable. Website menampilkan:
 
---- PREFERENSI DESAIN ---
-Sesuiakan desain yang saya sertakan
---- REQUIREMENT TEKNIS ---
-- Responsive (mobile-friendly)
-- Animasi halus saat scroll dan hover
-- Navigasi smooth scroll
-- Gunakan Google Fonts (pilih yang unik, bukan Inter/Roboto)
-- Tambahkan section: Hero, About, Skills, Projects, Contact
-- Efek visual yang memukau dan berkesan — bukan template generik
+- **Hero Section** — animasi typing, kartu profil GitHub, dan tombol CTA ke CV & kontak.
+- **About Section** — deskripsi diri dalam style code-editor card.
+- **Skills & Tools** — logo brand teknologi (Kotlin, Android Studio, Jetpack Compose, React, Laravel, dll) dalam kartu ikon + marquee nama skill.
+- **Projects** — showcase proyek unggulan dari GitHub.
+- **CV Preview** — pratinjau CV online sebelum diunduh.
+- **Contact Form** — form kontak dengan mailto.
+- Smooth scroll navigation & reveal animations di seluruh section.
 
-This project was built with [Lovable](https://lovable.dev).
+## Teknologi yang Digunakan
 
-## Build with Lovable
+- **Framework:** [TanStack Start](https://tanstack.com/start) v1 + React 19
+- **Build Tool:** Vite 7
+- **Styling:** Tailwind CSS v4
+- **Runtime target:** Cloudflare Workers / Edge Functions
+- **Icons:** Lucide React + Simple Icons CDN
+- **Fonts:** Unbounded (heading), Outfit (body), JetBrains Mono (code)
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/c423daea-738c-4ef9-bb17-7439b78749d2).
+## Daftar Proyek yang Ditampilkan
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+1. **KDMP Mesuji Jaya** — Sistem informasi koperasi desa (React + Tailwind)
+2. **KopdesMJ Android** — Aplikasi mobile koperasi desa (Kotlin + Firebase)
+3. **Sarpras** — Manajemen sarana & prasarana (Kotlin + MVVM)
+4. **KhatApps** — Aplikasi pembelajaran khat (Kotlin + Room)
+5. **PPDB Dena Upakara** — Sistem PPDB berbasis Android
+6. **MovieShof** — Katalog film dengan TMDB API (Kotlin + Retrofit)
 
-## Development
+## Cara Menjalankan Project (Development)
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Pastikan Node.js versi **20+** atau **Bun** sudah terinstall.
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+### 1. Clone repository
+
+```bash
+git clone https://github.com/ahmadsodik4717/portfolio-ahmad-sodik.git
+cd portfolio-ahmad-sodik
+```
+
+### 2. Install dependensi
+
+Menggunakan Bun (disarankan):
+
+```bash
+bun install
+```
+
+Atau menggunakan npm:
+
+```bash
+npm install
+```
+
+### 3. Jalankan server development
+
+```bash
+bun dev
+# atau
 npm run dev
 ```
+
+Buka browser di `http://localhost:8080`.
+
+### 4. Build untuk production
+
+```bash
+bun run build
+# atau
+npm run build
+```
+
+### 5. Format & lint
+
+```bash
+bun run format
+bun run lint
+# atau
+npm run format
+npm run lint
+```
+
+## Struktur Folder
+
+```
+portfolio-ahmad-sodik/
+├── src/
+│   ├── components/
+│   │   ├── Portfolio.tsx      # Komponen utama halaman portfolio
+│   │   ├── SiteNav.tsx        # Navigasi responsive
+│   │   └── Reveal.tsx         # Wrapper animasi scroll reveal
+│   ├── routes/
+│   │   ├── __root.tsx         # Root layout & provider
+│   │   ├── index.tsx          # Route / + metadata SEO
+│   │   └── ...                # Route lain jika ada
+│   ├── styles.css             # Tailwind v4 + custom theme
+│   ├── router.tsx             # TanStack Router config
+│   ├── server.ts              # Server config
+│   └── start.ts               # Start config
+├── package.json
+├── vite.config.ts
+├── tsconfig.json
+└── README.md
+```
+
+## Assets & CV
+
+- CV tersedia dalam format PDF dan dapat diunduh publik.
+- Pratinjau CV ditampilkan sebagai gambar resolusi tinggi agar tidak diblokir browser.
+
+## Deploy
+
+Project ini dibangun di atas [Lovable](https://lovable.dev) dan dapat di-deploy langsung dari platform Lovable atau di-export ke GitHub untuk hosting di Vercel / Cloudflare Pages / Netlify.
+
+## Kontak
+
+- **Email:** ahmadsodik0105@gmail.com
+- **GitHub:** [@ahmadsodik4717](https://github.com/ahmadsodik4717)
+- **LinkedIn:** [Ahmad Sodik](https://www.linkedin.com/in/ahmadsodik)
+
+---
+
+Dibuat dengan semangat koding oleh **Ahmad Sodik**.
