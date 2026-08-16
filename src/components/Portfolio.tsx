@@ -13,19 +13,19 @@ const AnimatedSphere = () => {
   });
   
   return (
-    <Sphere ref={sphereRef} visible args={[1, 100, 200]} scale={2.2}>
+    <Sphere ref={sphereRef} visible args={[1, 100, 200]} scale={2.4}>
       <MeshDistortMaterial
-        color="#00D2FF"
+        color="#0A8F8F"
         attach="material"
         distort={0.4}
         speed={2}
         roughness={0.2}
-        metalness={0.8}
+        metalness={0.7}
+        envMapIntensity={1}
       />
     </Sphere>
   );
 };
-import { SiteNav } from "@/components/SiteNav";
 import { Reveal } from "@/components/Reveal";
 import cvAsset from "@/assets/cv.pdf.asset.json";
 import cvPage1 from "@/assets/cv-page-1.jpg.asset.json";
@@ -155,15 +155,17 @@ export default function Portfolio() {
       <section id="home" className="relative flex min-h-screen items-center pt-28 pb-20">
         <div className="absolute inset-0 grid-bg opacity-20" aria-hidden />
         <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal/10 blur-3xl" aria-hidden />
-        <div className="absolute right-0 top-1/4 h-[400px] w-[400px] hidden lg:block opacity-60 pointer-events-none" style={{ zIndex: 0 }}>
-          <Canvas camera={{ position: [0, 0, 5] }}>
-            <ambientLight intensity={1.5} />
-            <directionalLight position={[2, 1, 1]} intensity={2} />
-            <AnimatedSphere />
-          </Canvas>
+        {/* 3D Sphere Background */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 opacity-40 lg:opacity-60 pointer-events-none" style={{ zIndex: 0 }}>
+          <div className="w-[350px] h-[350px] md:w-[600px] md:h-[600px] lg:w-[800px] lg:h-[800px]">
+            <Canvas camera={{ position: [0, 0, 4] }}>
+              <ambientLight intensity={1.5} />
+              <directionalLight position={[5, 5, 5]} intensity={2.5} />
+              <AnimatedSphere />
+            </Canvas>
+          </div>
         </div>
-
-        <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-6 lg:grid-cols-[1fr_1.4fr_1fr] lg:items-center">
+        <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-6 lg:grid-cols-[1fr_1.4fr_1fr] lg:items-center" style={{ zIndex: 10 }}>
           {/* Profile card */}
           <Reveal>
             <div className="relative mx-auto w-full max-w-xs rounded-[2rem] border border-teal/60 bg-surface/60 p-6 backdrop-blur-sm glow-teal">
