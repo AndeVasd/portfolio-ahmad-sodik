@@ -1,5 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Mail, MapPin, Github, Twitter, Linkedin, Download, Code2, Smartphone, Globe, Database, ArrowRight, ExternalLink, Send, FileText, Eye, X } from "lucide-react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
+
+const AnimatedSphere = () => {
+  const sphereRef = useRef<any>(null);
+  useFrame(({ clock }) => {
+    if (sphereRef.current) {
+      sphereRef.current.rotation.x = clock.getElapsedTime() * 0.2;
+      sphereRef.current.rotation.y = clock.getElapsedTime() * 0.3;
+    }
+  });
+  
+  return (
+    <Sphere ref={sphereRef} visible args={[1, 100, 200]} scale={2.2}>
+      <MeshDistortMaterial
+        color="#00D2FF"
+        attach="material"
+        distort={0.4}
+        speed={2}
+        roughness={0.2}
+        metalness={0.8}
+      />
+    </Sphere>
+  );
+};
 import { SiteNav } from "@/components/SiteNav";
 import { Reveal } from "@/components/Reveal";
 import cvAsset from "@/assets/cv.pdf.asset.json";
@@ -130,6 +155,13 @@ export default function Portfolio() {
       <section id="home" className="relative flex min-h-screen items-center pt-28 pb-20">
         <div className="absolute inset-0 grid-bg opacity-20" aria-hidden />
         <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal/10 blur-3xl" aria-hidden />
+        <div className="absolute right-0 top-1/4 h-[400px] w-[400px] hidden lg:block opacity-60 pointer-events-none" style={{ zIndex: 0 }}>
+          <Canvas camera={{ position: [0, 0, 5] }}>
+            <ambientLight intensity={1.5} />
+            <directionalLight position={[2, 1, 1]} intensity={2} />
+            <AnimatedSphere />
+          </Canvas>
+        </div>
 
         <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-6 lg:grid-cols-[1fr_1.4fr_1fr] lg:items-center">
           {/* Profile card */}
